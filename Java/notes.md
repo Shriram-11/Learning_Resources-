@@ -1,3 +1,5 @@
+![plot](D:\Learning_Resources-\Java\notes.md)
+
 ## How does a java code works
 
 Java makes use of Java Virtual Machine which cotains different libraries for the code to work. The strps involved are:

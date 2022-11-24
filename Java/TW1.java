@@ -4,13 +4,13 @@ public class TW1 {
     public static void main(String[] args) {
         int[][] marks = new int[5][3];
         int[] total = new int[5];
-        int[] avg = new int[5];
-        Scanner in = new Scanner(System.in);
-        for (int i = 0; i < 5; i++) {
-            System.out.println("Student" + (i + 1));
-            for (int j = 0; j < 3; j++) {
-                marks[i][j] = in.nextInt();
-                total[i] = marks[i][j];
+        try (Scanner in = new Scanner(System.in)) {
+            for (int i = 0; i < 5; i++) {
+                System.out.println("Student" + (i + 1));
+                for (int j = 0; j < 3; j++) {
+                    marks[i][j] = in.nextInt();
+                    total[i] = marks[i][j];
+                }
             }
         }
         System.out.println("--");
