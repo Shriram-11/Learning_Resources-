@@ -1,4 +1,4 @@
-![plot](D:\Learning_Resources-\Java\notes.md)
+![plot](D:\Learning_Resources-\Java\1.png)
 
 ## How does a java code works
 
