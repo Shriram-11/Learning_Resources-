@@ -207,3 +207,71 @@ datatype[][] arr_name=new datatype[row_size][column_size]; \\multi dimentional a
 ```
     arr_name[index];
 ```
+
+## Strings
+
+In many languages such as C/C++ strings are defined as an array, but in JAVA it is defined as an object.
+
+#### Declaration of strings
+
+```
+String str = new String("Hello");
+String str1 = "Hello":
+String str;
+
+```
+
+### Opeartions on strings
+
+1. **equals(str)**: Returns true if two strings are equal.
+   ```
+   String str1="Hello";
+   String str2="Hello";
+   String str3="hello";
+   str1.equals(str2); // true
+   str1.equals(str3); // false
+   ```
+2. **lenght()**:Returns the length of the string.
+   ```
+   String str1="Hello";
+   str1.lenght(); //5
+   ```
+3. **charAt(index)**:Returns the character at the given index.
+   ```
+   String str1="Hello";
+   str1.lenght(); //5
+   ```
+4. **compareTo(str)**:Returns a **-ve** value if invoking string is less than _str_,**+ve** if invoking string is greater than _str_ and **0** if invoking string is equal to str.
+   ```
+   String str1="Hello";
+   String str2="Hell";
+   String str3="helloworld";
+   str1.comepareTo(str2); // +ve
+   str1.compareTo(str3); // -ve
+   ```
+5. **indexOf(str)**:Returns the index of the **first** occurence of the str encounterd in the invoking string, -1 of not encountered any.
+
+   ```
+   String str1="Hello";
+   str1.indexOf("l"); //2
+   str1.indexOf("Hell"); //0
+
+   ```
+
+6. **lastindexOf(str)**:Returns the index of the **last** occurence of the str encounterd in the invoking string, -1 of not encountered any.
+
+   ```
+   String str1="Hello";
+   str1.lastindexOf("l"); //3
+   str1.lastindexOf("Hell"); //0
+
+   ```
+
+7. **toUpperCase()**: Returns string in upper case.
+
+   ```
+   String str1="Hello";
+   str1.toUpperCase(); //HELLO"
+   ```
+
+   _strings are immutable_
