@@ -32,7 +32,14 @@ int evaluate(int a, int b, char c)
     else if (c == '*')
         r = (a * b);
     else if (c == '/')
+    {
+        if (b == 0)
+        {
+            printf("Invalid\n");
+            exit(0);
+        }
         r = (a / b);
+    }
     else
         r = 0;
     return r;
