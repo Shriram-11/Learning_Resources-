@@ -1,0 +1,77 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch tw1_4",
+            "request": "launch",
+            "mainClass": "tw1_4",
+            "projectName": "Learning_Resources-_f8d99b50"
+        },
+        {
+            "type": "java",
+            "name": "Launch tw1_3",
+            "request": "launch",
+            "mainClass": "tw1_3",
+            "projectName": "Learning_Resources-_f8d99b50"
+        },
+        {
+            "type": "java",
+            "name": "Launch tw1_2",
+            "request": "launch",
+            "mainClass": "tw1_2",
+            "projectName": "Learning_Resources-_f8d99b50"
+        },
+        {
+            "type": "java",
+            "name": "Launch tw1_1",
+            "request": "launch",
+            "mainClass": "tw1_1",
+            "projectName": "Learning_Resources-_f8d99b50"
+        },
+        {
+            "type": "java",
+            "name": "Launch tw1_1",
+            "request": "launch",
+            "mainClass": "additional.tw1_1",
+            "projectName": "Learning_Resources-_f8d99b50"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch TW1",
+            "request": "launch",
+            "mainClass": "TW1",
+            "projectName": "Learning_Resources-_f8d99b50"
+        },
+        {
+            "type": "java",
+            "name": "Launch hwrld",
+            "request": "launch",
+            "mainClass": "hwrld",
+            "projectName": "Learning_Resources-_f8d99b50"
+        },
+        {
+            "type": "java",
+            "name": "Launch tw3",
+            "request": "launch",
+            "mainClass": "tw3",
+            "projectName": "Learning_Resources-_f8d99b50"
+        },
+        {
+            "type": "java",
+            "name": "Launch tw4",
+            "request": "launch",
+            "mainClass": "tw4",
+            "projectName": "Learning_Resources-_f8d99b50"
+        }
+    ]
+}

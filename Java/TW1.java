@@ -6,9 +6,8 @@ public class TW1 {
         int[] total = new int[5];
         Scanner in = new Scanner(System.in);
         for (int i = 0; i < 5; i++) {
+            System.out.println("Student" + (i + 1));
             for (int j = 0; j < 3; j++) {
-                System.out.println("Student" + (i + 1));
-
                 marks[i][j] = in.nextInt();
                 total[i] = marks[i][j];
             }
