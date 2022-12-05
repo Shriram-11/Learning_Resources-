@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch tw2_3",
+            "request": "launch",
+            "mainClass": "tw2_3",
+            "projectName": "Learning_Resources-_f8d99b50"
+        },
+        {
+            "type": "java",
             "name": "Launch tw1_4",
             "request": "launch",
             "mainClass": "tw1_4",
