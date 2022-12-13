@@ -55,7 +55,7 @@ int value(char a)
 }
 void calc(char a)
 {
-    if (value(a) >= value(op[top]))
+    if (value(a) >= value(op[top1]))
     {
         pushc(a);
         return;

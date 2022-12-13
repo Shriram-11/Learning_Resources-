@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Transition</title>
+    <style>
+      /*.transit {
+        width: 100px;
+        height: 100px;
+        background: rgb(248, 162, 3);
+        transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+        transition: width 8s, height 8s;
+        transition:height 8s;
+      }
+      div:hover {
+        width: 1500px;
+        height: 500px;
+        <div class="transit"></div>
+      }*/
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: relative;
+        animation-name: example;
+        animation-duration: 1s;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+      }
+
+      @keyframes example {
+        0% {
+          background-color: red;
+          left: 0px;
+          top: 0px;
+        }
+        12.5% {
+          background-color: rgb(208, 0, 255);
+          left: 500px;
+          top: 250px;
+        }
+        25% {
+          background-color: rgb(26, 217, 36);
+          left: 1000px;
+          top: 0px;
+        }
+        37.5% {
+          background-color: rgb(208, 0, 255);
+          left: 500px;
+          top: 250px;
+        }
+        50% {
+          background-color: rgb(0, 255, 225);
+          left: 1000px;
+          top: 500px;
+        }
+        62.5% {
+          background-color: rgb(208, 0, 255);
+          left: 500px;
+          top: 250px;
+        }
+        75% {
+          background-color: rgb(55, 0, 255);
+          left: 0px;
+          top: 500px;
+        }
+        87.5% {
+          background-color: rgb(208, 0, 255);
+          left: 500px;
+          top: 250px;
+        }
+        100% {
+          background-color: yellow;
+          left: 0px;
+          top: 0px;
+        }
+        /*from {
+          background-color: red;
+          left: 0px;
+          top: 0px;
+        }
+        to {
+          background-color: rgb(96, 240, 127);
+          left: 500px;
+          top: 250px;
+        }*/
+      }
+    </style>
+  </head>
+  <body>
+    <div>CSS</div>
+  </body>
+</html>

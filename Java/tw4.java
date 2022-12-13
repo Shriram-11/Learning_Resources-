@@ -30,8 +30,7 @@ class employee {
         gender = a.nextLine();
         System.out.println("Address:");
         address = a.nextLine();
-        System.out.println("Basic salary:");
-        salary = a.nextDouble();
+
     }
 }
 
@@ -40,6 +39,9 @@ class permanent extends employee {
 
     permanent() {
         super();
+        Scanner a = new Scanner(System.in);
+        System.out.println("Basic salary:");
+        salary = a.nextDouble();
     }
 
     void calc() {
@@ -103,7 +105,7 @@ class temp extends employee {
 
     void display() {
         System.out.println("Name:" + name + "\nAge:" + age + "\nGender" + gender + "\nAddress:" + address
-                + "\nBasic Salary" + salary + "\nGross Salary:" + gsal);
+                + "\nGross Salary:" + gsal);
     }
 
 }
