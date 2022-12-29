@@ -1,70 +1,80 @@
-/*Design an abstract class Car to have carName, chassiNum, modelName as member
-variables and add two abstract methods, startCar and operateSteering . Inherit MarutiCar and
-BmwCar from Car class and override the two abstract methods in their own unique way.
-Design a driver class to have driver name, gender and age as data members and add a method
-driveCar with abstract class reference variable as argument and invoke the two basic
-operations namely, startCar and operateStearing and demonstrate run-time polymorphism. */
+import java.util.*;
 
-abstract class Car{
-    String name,model,chasisNum;
-    Car(String a,String b,String c){
-        name=a;
-        model=b;
-        chasisNum=c;
-    }
-    abstract void StartCar();
-    abstract void operatesteering();  
-    void show(){
-        System.out.println("Car Name:"+name+"\nModel Name:"+model+"\nChassis No.:"+chasisNum);
+interface IsPrime {
+    boolean isprime(int n);
+
+}
+
+class PrimeTester implements IsPrime {
+    public boolean isprime(int n) {
+        for (int i = 2; i < n; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 
-class BMW extends Car{
-    BMW(String a,String b,String c){
-        super(a,b,c);
-    }
-    void StartCar(){
-        System.out.println("BMW is starting");
-    }
-    void operatesteering(){
-        System.out.println("The steering is sharp and powerful");
-    }
-}
-
-class Maruti extends Car{
-    Maruti(String a,String b,String c){
-        super(a,b,c);
-    }
-    void StartCar(){
-        System.out.println("Car is starting");
-    }
-    void operatesteering(){
-        System.out.println("The steering is not good");
+class ImprPrimeTester implements IsPrime {
+    public boolean isprime(int n) {
+        for (int i = 2; i < n / 2; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 
-class Driver{
-    String dn,gender;
-    int age;
-    Driver(String n,String g,int a){
-        dn=n;
-        gender=g;
-        age=a;
-    }
-    void drivecar(Car obj){
-        System.out.println("Name:"+dn+"\nGender"+gender+"\nAge:"+age);
-        obj.show();
-        obj.StartCar();
-        obj.operatesteering();
+class FasterPrimeTester implements IsPrime {
+    public boolean isprime(int n) {
+        for (int i = 2; i < Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
+
+class FastestPrimeTester implements IsPrime {
+    public boolean isprime(int n) {
+        for (int i = 1; i < n - 1; i++) {
+            if (Math.pow(i, n - 1) % n != 1) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
 public class tw7 {
     public static void main(String[] args) {
-        Car a=new Maruti("IGNIS","1.6 L Petrol","NOTSAFE01");
-        Car b=new BMW("M5","Touring V10","BOND007");
-        Driver d1=new Driver("Buddha","M",19);
-        d1.drivecar(a);
-        Driver d2=new Driver("Shriram","M",19);
-        d2.drivecar(b);
+        PrimeTester a = new PrimeTester();
+        ImprPrimeTester b = new ImprPrimeTester();
+        FasterPrimeTester c = new FasterPrimeTester();
+        FastestPrimeTester d = new FastestPrimeTester();
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter No.:");
+        int n = in.nextInt();
+        System.out.println("\nPrime Tester");
+        check(a.isprime(n));
+        System.out.println("\nImpr Prime Tester");
+        check(b.isprime(n));
+        System.out.println("\nFaster Prime Tester");
+        check(c.isprime(n));
+        System.out.println("\nFastest Prime Tester");
+        check(d.isprime(n));
     }
+
+    static void check(boolean n) {
+        if (n) {
+            System.out.println("Is a Prime No.");
+            return;
+        }
+        System.out.println("Not a prime no.");
+
+    }
+
 }
