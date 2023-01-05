@@ -4,7 +4,6 @@ BmwCar from Car class and override the two abstract methods in their own unique 
 Design a driver class to have driver name, gender and age as data members and add a method
 driveCar with abstract class reference variable as argument and invoke the two basic
 operations namely, startCar and operateStearing and demonstrate run-time polymorphism. */
-
 abstract class Car {
     String name, model, chasisNum;
 
