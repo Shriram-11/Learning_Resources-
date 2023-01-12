@@ -11,17 +11,31 @@ public class tw9 {
         checkAnagram(a1,a2);
 
     }
+    static char[] sort(char[] a) {
+        for(int i=0;i<a.length;i++){
+            for(int j=0;j<a.length;j++){
+
+                if(a[i]>a[j]){
+                    char temp=a[i];
+                    a[i]=a[j];
+                    a[j]=temp;
+                }
+
+            }
+        }
+        return a;
+    }
     static void checkAnagram(String s1  ,String s2){
         if(s1.length()!=s2.length()){
-            System.out.println("The two strings are not of same length");
+            System.out.println("The two strings are not anagrams");
             return;
         }
         char[] c1=s1.toCharArray();
         char[] c2=s2.toCharArray();
-        Arrays.sort(c1);
-        Arrays.sort(c2);
+        char[] c3=sort(c1);
+        char[] c4=sort(c2);
         
-        if(Arrays.equals(c1,c2)){
+        if(Arrays.equals(c3,c4)){
 
             System.out.println("The two strings are anagrams");
         }
@@ -29,5 +43,6 @@ public class tw9 {
             
             System.out.println("The two strings are not anagrams");
         }
+    
     }
 }
