@@ -1,0 +1,33 @@
+<!-- 
+    cords.latitude: always returns latitude in decimal
+    cords.longitude: always returns longitude in decimal
+    cords.accuracy: always returns accuracy of current position
+    cords.altitude: altitude in meters above sea level (if available)
+    cords.altitudeAccuracy: accuracy of altitude (if available)
+    cords.heading: the heading as degrees clockwise from North (if available)
+    cords.speed: The speed in meters per sec
+    timestamp: the date/time of response
+ -->
+<!DOCTYPE html>
+<html>
+<body>
+    <h2 font-size:10px text-color:red>Geolacation API</h2>
+    <p>Click to get cooradinates</p>
+<p id="demo"></p>
+<button onclick="getlocation()">click me</button>
+<script>
+    function getlocation(){
+        if(navigator.geolocation){
+            navigator.geolocation.watchPosition(showPosition);
+        }
+        else
+        {
+            document.getElementById("demo").innerHTML="Geolacation is not supported";
+        }
+    }
+    function showPosition(position){
+        document.getElementById("demo").innerHTML="Latitude:"+position.coords.latitude+"<br>Longitude"+position.coords.longitude+"<br>acccuracy="+position.coords.accuracy;
+    }
+</script>
+</body>
+</html>

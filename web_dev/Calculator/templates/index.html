@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #calculator {
+        background-color: black;
+        width: 221px;
+        color: white;
+      }
+
+      #display {
+        background-color: gray;
+        width: 200px;
+        text-align: right;
+        padding: 10px;
+        font-size: 20px;
+      }
+
+      #result {
+        background-color: gray;
+        width: 200px;
+        text-align: right;
+        padding: 10px;
+        font-size: 20px;
+      }
+
+      #buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: none;
+        justify-content: center;
+      }
+
+      #buttons input[type="button"] {
+        background-color: black;
+        color: white;
+        width: 50px;
+        height: 50px;
+
+        font-size: 20px;
+      }
+
+      #clear {
+        grid-column: span 2;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <form id="calculator" method="post">
+        <input type="text" id="display" name="exp" value="" />
+        <input type="text" id="result" name="res" value="{{res}}" />
+        <br />
+        <div id="buttons">
+          <input
+            type="button"
+            value="1"
+            onclick="updateExpression(this.value)"
+          />
+          <input
+            type="button"
+            value="2"
+            onclick="updateExpression(this.value)"
+          />
+          <input
+            type="button"
+            value="3"
+            onclick="updateExpression(this.value)"
+          />
+          <input
+            type="button"
+            value="+"
+            onclick="updateExpression(this.value)"
+          />
+          <input
+            type="button"
+            value="4"
+            onclick="updateExpression(this.value)"
+          />
+          <input
+            type="button"
+            value="5"
+            onclick="updateExpression(this.value)"
+          />
+          <input
+            type="button"
+            value="6"
+            onclick="updateExpression(this.value)"
+          />
+          <input
+            type="button"
+            value="-"
+            onclick="updateExpression(this.value)"
+          />
+          <input
+            type="button"
+            value="7"
+            onclick="updateExpression(this.value)"
+          />
+          <input
+            type="button"
+            value="8"
+            onclick="updateExpression(this.value)"
+          />
+          <input
+            type="button"
+            value="9"
+            onclick="updateExpression(this.value)"
+          />
+          <input
+            type="button"
+            value="*"
+            onclick="updateExpression(this.value)"
+          />
+          <input
+            type="button"
+            value="."
+            onclick="updateExpression(this.value)"
+          />
+          <input
+            type="button"
+            value="0"
+            onclick="updateExpression(this.value)"
+          />
+          <input
+            type="button"
+            value="/"
+            onclick="updateExpression(this.value)"
+          />
+          <input
+            type="button"
+            value="("
+            onclick="updateExpression(this.value)"
+          />
+          <input
+            type="button"
+            value=")"
+            onclick="updateExpression(this.value)"
+          />
+          <input
+            type="button"
+            value="^"
+            onclick="updateExpression(this.value)"
+          />
+          <input
+            type="button"
+            value="sin"
+            onclick="updateExpression(this.value)"
+          />
+          <input
+            type="button"
+            value="cos"
+            onclick="updateExpression(this.value)"
+          />
+          <input
+            type="button"
+            value="tan"
+            onclick="updateExpression(this.value)"
+          />
+          <input type="button" value="C" onclick="clearExpression()" />
+          <input type="button" name="calc" value="{{cal}}" />
+        </div>
+      </form>
+    </center>
+    <script>
+      function updateExpression(value) {
+        var current = document.getElementById("display").value;
+        if (value == "^") {
+          value = "pow(";
+        }
+        document.getElementById("display").value = current + value;
+      }
+      function update(value) {
+        document.getElementById("calc").value = "T";
+      }
+      function clearExpression() {
+        var display = document.getElementById("display");
+        display.value = "";
+      }
+    </script>
+  </body>
+</html>
