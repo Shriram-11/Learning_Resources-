@@ -1,22 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-
     <script>
       function validateForm() {
-        var a = parseInt(document.forms["myForm"]["x"].value);
-        var b = parseInt(document.forms["myForm"]["y"].value);
-        if (a == "" || b == "") {
+        let x = document.forms["myForm"]["fname"].value;
+        if (x == "") {
           alert("Name must be filled out");
           return false;
-        } else {
-          var result = a + b;
-          alert(result);
-          return true;
         }
       }
     </script>
@@ -30,7 +20,7 @@
       onsubmit="return validateForm()"
       method="post"
     >
-      x: <input type="text" name="x" /> y: <input type="text" name="y" />
+      Name: <input type="text" name="fname" />
       <input type="submit" value="Submit" />
     </form>
   </body>
