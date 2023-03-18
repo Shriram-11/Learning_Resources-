@@ -1,0 +1,2 @@
+import newgame
+newgame.GAME()

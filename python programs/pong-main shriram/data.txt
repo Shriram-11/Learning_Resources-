@@ -1,0 +1,25 @@
+ 
+
+Game number: 1
+Blue score: 0
+Red score: 1
+Status: Red wins
+Recorded at: 05:36:44 PM
+At date: 03/11/2020 - Tue
+-------------------------------------
+
+Game number: 2
+Blue score: 1
+Red score: 0
+Status: Blue wins
+Recorded at: 07:56:22 PM
+At date: 03/11/2020 - Tue
+-------------------------------------
+
+Game number: 3
+Blue score: 1
+Red score: 1
+Status: Tie
+Recorded at: 05:11:35 PM
+At date: 05/11/2020 - Thu
+-------------------------------------
