@@ -23,3 +23,11 @@ Status: Tie
 Recorded at: 05:11:35 PM
 At date: 05/11/2020 - Thu
 -------------------------------------
+
+Game number: 4
+Blue score: 3
+Red score: 5
+Status: Red wins
+Recorded at: 10:09:05 AM
+At date: 06/06/2023 - Tue
+-------------------------------------
