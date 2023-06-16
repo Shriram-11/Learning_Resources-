@@ -1,4 +1,3 @@
-
 '''
 Store the following information in a dict, course code, name, faculty, no. of registration
 Perform the following operrations using functions:
@@ -27,12 +26,10 @@ def searchC():
         print("Course Code:",code," Course Name:",li[0],"\nFaculty:",li[1]," No. of registrations:",li[2])
     else:
         print("Not Found")
-
 # Display All Courses
 def display():
     for key,li in course.items():
         print("Course Code:",key," Course Name:",li[0],"\nFaculty:",li[1]," No. of registrations:",li[2],"\n----------\n")
-
 # Display course with max registration
 def max_registrations():
     maxR=0
@@ -41,8 +38,7 @@ def max_registrations():
         if li[2]>maxR:
             maxR,maxK=li[2],key
     li=course[maxK]
-    print("Course Code:",key," Course Name:",li[0],"\nFaculty:",li[1]," No. of registrations:",li[2])
-    
+    print("Course Code:",key," Course Name:",li[0],"\nFaculty:",li[1]," No. of registrations:",li[2])    
 def main():
     while True:
         ch=int(input("Choices are:\n1. Add Course    2.Search Course    3.Course with max registrations    4: Display al    5.Exit\nEnter Choice"))
