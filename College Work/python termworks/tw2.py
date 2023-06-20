@@ -7,8 +7,10 @@ Perform the following operrations using functions:
 '''
 # Empty Dictionary
 course={}
+maxReg=0
 # Add a course
 def add():
+    global maxReg
     courseCode=input("Enter Course Code:")
     if courseCode in course:
         print("Course Code Already Exists")
@@ -16,6 +18,7 @@ def add():
     courseName=input("Enter Course Name:")
     fac=input("Enter Faculty Name:")
     reg=int(input("No. of registration:"))
+    maxReg=max(maxReg,reg)
    
     course[courseCode]=[courseName,fac,reg]
 # Search for a course
@@ -28,17 +31,16 @@ def searchC():
         print("Not Found")
 # Display All Courses
 def display():
+    if course=={}:
+        print("Empty")
+        return
     for key,li in course.items():
         print("Course Code:",key," Course Name:",li[0],"\nFaculty:",li[1]," No. of registrations:",li[2],"\n----------\n")
 # Display course with max registration
 def max_registrations():
-    maxR=0
-    maxK=""
     for key,li in course.items():
-        if li[2]>maxR:
-            maxR,maxK=li[2],key
-    li=course[maxK]
-    print("Course Code:",key," Course Name:",li[0],"\nFaculty:",li[1]," No. of registrations:",li[2])    
+        if li[2]==maxReg:
+            print("Course Code:",key," Course Name:",li[0],"\nFaculty:",li[1]," No. of registrations:",li[2])    
 def main():
     while True:
         ch=int(input("Choices are:\n1. Add Course    2.Search Course    3.Course with max registrations    4: Display al    5.Exit\nEnter Choice"))
