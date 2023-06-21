@@ -56,5 +56,6 @@ def main():
             break
         else:
             print("Invalid Input")
+        print()
 if __name__=="__main__":
     main()
