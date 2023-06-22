@@ -12,18 +12,28 @@ import csv
 
 class PriceLess(Exception):
     pass
+
 def add_book():
+    """
+    Function to add a book to the CSV file.
+    """
     book_no = input("Enter book number: ")
     title = input("Enter title: ")
     author = input("Enter author: ")
     price = float(input("Enter price: "))
+    
     with open('books.csv', 'a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow([book_no, title, author, price])
+        
     print("Book information added successfully!")
 
 def search_by_author():
+    """
+    Function to search books by author.
+    """
     author = input("Enter author name: ")
+    
     with open('books.csv', 'r') as file:
         reader = csv.reader(file)
         for row in reader:
@@ -31,9 +41,13 @@ def search_by_author():
                 print(", ".join(row))
 
 def search_below_price():
+    """
+    Function to search books below a specified price.
+    """
     price_limit = float(input("Enter price limit: "))
+    
     try:
-        if price_limit<0:
+        if price_limit < 0:
             raise PriceLess
         with open('books.csv', 'r') as file:
             reader = csv.reader(file)
@@ -42,11 +56,13 @@ def search_below_price():
                     print(", ".join(row))
     except PriceLess:
         print("Price Limit Cannot be less than 0\n")
-        
-    
 
 def search_by_title():
+    """
+    Function to search books by title.
+    """
     keyword = input("Enter keyword: ")
+    
     with open('books.csv', 'r') as file:
         reader = csv.reader(file)
         for row in reader:
@@ -54,29 +70,34 @@ def search_by_title():
                 print(", ".join(row))
 
 def main():
-        n=int(input("Enter no. of books you want to add:"))
-        for i in range(n):
-            add_book()
-        while True:
-            print('''\nMenu:
+    """
+    Main function to run the program.
+    """
+    n = int(input("Enter the number of books you want to add: "))
+    for i in range(n):
+        add_book()
+        
+    while True:
+        print('''\nMenu:
         1. Search books by author
         2. Search books below a specified price
         3. Search books by title
         4. Exit''')
-            
-            choice = input("Enter your choice (1-5): ")
-            
-            if choice == '1':
-                search_by_author()
-            elif choice == '2':
-                search_below_price()
-            elif choice == '3':
-                search_by_title()
-            elif choice == '4':
-                print("Exiting the program.")
-                break
-            else:
-                print("Invalid choice. Please try again.")
+        
+        choice = input("Enter your choice (1-4): ")
+        
+        if choice == '1':
+            search_by_author()
+        elif choice == '2':
+            search_below_price()
+        elif choice == '3':
+            search_by_title()
+        elif choice == '4':
+            print("Exiting the program.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
 
 if __name__ == '__main__':
     main()
+
