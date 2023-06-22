@@ -10,6 +10,8 @@ Develop a menu driven program with following options
 
 import csv
 
+class PriceLess(Exception):
+    pass
 def add_book():
     book_no = input("Enter book number: ")
     title = input("Enter title: ")
@@ -30,11 +32,18 @@ def search_by_author():
 
 def search_below_price():
     price_limit = float(input("Enter price limit: "))
-    with open('books.csv', 'r') as file:
-        reader = csv.reader(file)
-        for row in reader:
-            if float(row[3]) < price_limit:
-                print(", ".join(row))
+    try:
+        if price_limit<0:
+            raise PriceLess
+        with open('books.csv', 'r') as file:
+            reader = csv.reader(file)
+            for row in reader:
+                if float(row[3]) < price_limit:
+                    print(", ".join(row))
+    except PriceLess:
+        print("Price Limit Cannot be less than 0\n")
+        
+    
 
 def search_by_title():
     keyword = input("Enter keyword: ")
@@ -44,26 +53,30 @@ def search_by_title():
             if keyword.lower() in row[1].lower():
                 print(", ".join(row))
 
-while True:
-    print("\nMenu:")
-    print("1. Add a book")
-    print("2. Search books by author")
-    print("3. Search books below a specified price")
-    print("4. Search books by title")
-    print("5. Exit")
-    
-    choice = input("Enter your choice (1-5): ")
-    
-    if choice == '1':
-        add_book()
-    elif choice == '2':
-        search_by_author()
-    elif choice == '3':
-        search_below_price()
-    elif choice == '4':
-        search_by_title()
-    elif choice == '5':
-        print("Exiting the program.")
-        break
-    else:
-        print("Invalid choice. Please try again.")
+def main():
+        n=int(input("Enter no. of books you want to add:"))
+        for i in range(n):
+            add_book()
+        while True:
+            print('''\nMenu:
+        1. Search books by author
+        2. Search books below a specified price
+        3. Search books by title
+        4. Exit''')
+            
+            choice = input("Enter your choice (1-5): ")
+            
+            if choice == '1':
+                search_by_author()
+            elif choice == '2':
+                search_below_price()
+            elif choice == '3':
+                search_by_title()
+            elif choice == '4':
+                print("Exiting the program.")
+                break
+            else:
+                print("Invalid choice. Please try again.")
+
+if __name__ == '__main__':
+    main()
