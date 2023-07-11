@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Load the stock price dataset
-df = pd.read_csv('all_stocks_5yr.csv')  # Replace 'your_dataset.csv' with the path to your dataset
+df = pd.read_csv('aaplldataset.csv')  # Replace 'your_dataset.csv' with the path to your dataset
 
 # Select a specific stock
 stock_name = 'AAPL'  # Replace with the stock symbol you want to analyze
