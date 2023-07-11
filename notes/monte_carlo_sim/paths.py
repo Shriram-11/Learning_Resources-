@@ -20,7 +20,7 @@ mu = returns.mean()
 sigma = returns.std()
 
 # Define parameters for the simulation
-simulations = 2
+simulations = 1000
 forecast_horizon = 252  # Number of trading days in a year
 
 # Perform Monte Carlo simulation
