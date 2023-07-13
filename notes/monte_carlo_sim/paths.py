@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Load the stock price dataset
-df = pd.read_csv('aaplldataset.csv')  # Replace 'your_dataset.csv' with the path to your dataset
+df = pd.read_csv('aaplldataset.csv') 
 
 # Select a specific stock
 stock_name = 'AAPL'  # Replace with the stock symbol you want to analyze
@@ -34,8 +34,6 @@ for i in range(simulations):
     
     # Append the simulated price path to the DataFrame
     simulated_prices[i] = price_path
-
-
 
 # Plot the historical prices and simulated price paths
 # Plotting the simulated price paths
