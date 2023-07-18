@@ -13,54 +13,88 @@ f) Increase the price of all the products whose current price is less than 50 by
 g) Display all the products whose quantity is less than 40
 '''
 
-import sqlite3
+import sqlite3 as sq
+from contextlib import closing
 
-# Create a database
-conn = sqlite3.connect('products.sqlite')
-cursor = conn.cursor()
 
-# Create the products table
+#creating databse co
+conn=sq.connect("products.sqlite")
+cursor=conn.cursor()
+
+#creating a table 
 cursor.execute('''CREATE TABLE IF NOT EXISTS products
-                  (prodid INT PRIMARY KEY, name TEXT, quantity INT, price REAL)''')
+                    (prodid INT PRIMARY KEY, name TEXT, quantity INT, price REAL)''')
 
-# Function to insert records into the table
-def insert_records(n):
+#function to enter n records into table
+def insertRec(n):
     for _ in range(n):
-        prodid = int(input("Enter product ID: "))
-        name = input("Enter product name: ")
-        quantity = int(input("Enter product quantity: "))
-        price = float(input("Enter product price: "))
+        prodid=int(input("Enter Production ID: "))
+        name=input("Enter Product Name: ")
+        quantity=int(input("Enter record of quantity: "))
+        price=float(input("Enter Product price: "))
         cursor.execute("INSERT INTO products VALUES (?, ?, ?, ?)",
                        (prodid, name, quantity, price))
+        
     conn.commit()
 
-# Insert records into the table
-n = int(input("Enter the number of records to insert: "))
-insert_records(n)
 
-# Display all the records
-cursor.execute("SELECT * FROM products")
-records = cursor.fetchall()
-print("Product ID\tName\t\tQuantity\tPrice")
-for record in records:
-    print(f"{record[0]}\t\t{record[1]}\t\t{record[2]}\t\t{record[3]}")
+#display all records
+def displayALL():
+    cursor.execute("SELECT * FROM products")
+    records=cursor.fetchall()
+    print("Product ID\tName\t\tQuantity\tPrice")
+    for record in records:
+        print(f"{record[0]}\t\t{record[1]}\t\t{record[2]}\t\t{record[3]}")
 
 # Delete a product by product ID
-prod_id = int(input("Enter the product ID to delete: "))
-cursor.execute("DELETE FROM products WHERE prodid = ?", (prod_id,))
-conn.commit()
+def delPro():
+    prod_id = int(input("Enter the product ID to delete: "))
+    cursor.execute("DELETE FROM products WHERE prodid = ?", (prod_id,))
+    conn.commit()
 
 # Increase the price of products with price less than 50 by 10%
-cursor.execute("UPDATE products SET price = price * 0.1 WHERE price < 50")
-conn.commit()
+def incPri():
+    cursor.execute("UPDATE products SET price = price + price * 0.1 WHERE price < 50")
+    conn.commit()
+    displayALL()
 
-# Display products with quantity less than 40
-cursor.execute("SELECT * FROM products WHERE quantity < 40")
-records = cursor.fetchall()
-print("Products with quantity less than 40:")
-print("Product ID\tName\t\tQuantity\tPrice")
-for record in records:
-    print(f"{record[0]}\t\t{record[1]}\t\t{record[2]}\t\t{record[3]}")
+#Display products with quantity less than 40
+def disQut():
+    cursor.execute("SELECT * FROM products WHERE quantity<40")
+    records=cursor.fetchall()
+    print("Products with quantity less than 40:")
+    print("Product ID\tName\t\tQuantity\tPrice")
+    for record in records:
+        print(f"{record[0]}\t\t{record[1]}\t\t{record[2]}\t\t{record[3]}")
 
-# Close the connection
-conn.close()
+
+def main():
+    while(1):
+        print("Enter choice\n1 Insert n values\n2 Display All records\n3 Delete a product\n4 Increase price of product if its price is less than 50\n5 Display products with quantity less than 40\n6 Exit ")
+        c=int(input())
+
+        if(c==1):
+            n=int(input("Enter number of records: "))
+            insertRec(n)
+        elif(c==2):
+            print("Products Database: ")
+            displayALL()
+        elif(c==3):
+            delPro()
+        elif(c==4):
+            print("Increased prices: ")
+            incPri()
+        elif(c==5):
+            print("Products who have less quantity than 40: ")
+            disQut()
+        elif(c==6):
+            print("Database closed sucessfully")
+            # Close the connection
+            conn.close()
+            exit()
+
+
+
+if __name__=='__main__':
+    main()
+
