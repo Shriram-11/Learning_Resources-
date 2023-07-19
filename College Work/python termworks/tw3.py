@@ -32,13 +32,17 @@ def search_by_author():
     """
     Function to search books by author.
     """
+    f=0
     author = input("Enter author name: ")
     
     with open('books.csv', 'r') as file:
         reader = csv.reader(file)
         for row in reader:
             if row[2].lower() == author.lower():
-                print(", ".join(row))
+                print("Book No.:",row[0]," Name:",row[1]," Author:",row[2]," Price:",row[3])
+                f=1
+        if f==0:
+            print("Book not found")
 
 def search_below_price():
     """
@@ -51,9 +55,13 @@ def search_below_price():
             raise PriceLess
         with open('books.csv', 'r') as file:
             reader = csv.reader(file)
+            f=0
             for row in reader:
                 if float(row[3]) < price_limit:
-                    print(", ".join(row))
+                    print("Book No.:",row[0]," Name:",row[1]," Author:",row[2]," Price:",row[3])
+                    f=1
+            if f==0:
+                print("No book below specified price")
     except PriceLess:
         print("Price Limit Cannot be less than 0\n")
 
@@ -62,20 +70,30 @@ def search_by_title():
     Function to search books by title.
     """
     keyword = input("Enter keyword: ")
-    
+    f=0
     with open('books.csv', 'r') as file:
         reader = csv.reader(file)
         for row in reader:
             if keyword.lower() in row[1].lower():
-                print(", ".join(row))
+                print("Book No.:",row[0]," Name:",row[1]," Author:",row[2]," Price:",row[3])
+                f=1
+        if f==0:
+            print("No book found conataining the word ",keyword)
 
 def main():
     """
     Main function to run the program.
     """
+    
     n = int(input("Enter the number of books you want to add: "))
+     
     for i in range(n):
         add_book()
+    print("Books Are:")
+    with open('books.csv', 'r') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            print(", ".join(row))
         
     while True:
         print('''\nMenu:
