@@ -1,15 +1,26 @@
-# Python Program To read n names from the user store it in a list and write to a text file
-# The program should also read the names from the text file and display them
+class Product():
+    def __init__(self,name,price,discountpercent):
+        self.name = name
+        self.price = price
+        self.discountpercent = discountpercent
+    def getDiscountAmount(self):
+        return self.price * self.discountpercent
+    def getDiscountPrice(self):
+        return self.price-self.price * self.discountpercent
+    def getDescription(self):
+        pass
 
-names = []
-n= int(input("Enter No.:"))
-for i in range(n):
-    names.append(input("Enter Name:")+'\n')
-with open('sample.txt', 'w',newline="") as f:
-    f.writelines(names)
+class Book(Product):
+    def __init__(self,name,price,discount,author):
+        super().__init__(self,name,price,discount)
+        self.author = author
+    def getDescription(self):
+        print("Book Class")
 
-with open('sample.txt', 'r') as f:
-    print("Sample.txt content:")
-    li=f.readlines()
-    for i in li:
-        print(i[:-1])
+class Movie(Product):
+    def __init__(self,name,price,discount,year):
+        super().__init__(self,name,price,discount)
+        self.year = year
+    def getDescription(self):
+        print("Movie class")
+
