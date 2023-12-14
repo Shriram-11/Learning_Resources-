@@ -51,6 +51,7 @@ if __name__ == '__main__':
     net.add_link(2, 5, 1)
     net.add_link(3, 4, 4)
     net.add_link(3, 5, 1)
+    net.add_link(1, 5, 1)
 
     for node in nodes:
         net.initialize_distance_vector(node)
