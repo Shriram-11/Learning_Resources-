@@ -1,15 +1,21 @@
 from sympy import randprime, Mod
-from math import gcd, pow
+from math import gcd
 
 # Function to encrypt using public key
+
+
 def encrypt(public_key, plaintext):
     e, n = public_key
     return [pow(ord(char), e, n) for char in plaintext]
 
 # Function to decrypt using private key
+
+
 def decrypt(private_key, ciphertext):
     d, n = private_key
     return ''.join(chr(pow(char, d, n)) for char in ciphertext)
+
+
 p = randprime(2**5, 2**6)
 q = randprime(2**5, 2**6)
 
@@ -23,7 +29,7 @@ while gcd(phi, e) != 1:
     e += 1
 
 # Calculate multiplicative inverse of e under modulo phi
-d = pow(e,-1,phi)
+d = pow(e, -1, phi)
 
 public_key = (e, n)
 private_key = (d, n)
