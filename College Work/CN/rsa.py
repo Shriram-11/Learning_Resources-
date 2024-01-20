@@ -1,17 +1,5 @@
 from sympy import randprime, Mod
-from math import gcd
-
-# Function to calculate multiplicative inverse
-def multiplicative_inverse(e, phi):
-    def extended_gcd(a, b):
-        if a == 0:
-            return b, 0, 1
-        else:
-            g, x, y = extended_gcd(b % a, a)
-            return g, y - (b // a) * x, x
-
-    _, x, _ = extended_gcd(e, phi)
-    return x % phi
+from math import gcd, pow
 
 # Function to encrypt using public key
 def encrypt(public_key, plaintext):
@@ -35,7 +23,7 @@ while gcd(phi, e) != 1:
     e += 1
 
 # Calculate multiplicative inverse of e under modulo phi
-d = multiplicative_inverse(e, phi)
+d = pow(e,-1,phi)
 
 public_key = (e, n)
 private_key = (d, n)
