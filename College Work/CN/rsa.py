@@ -1,4 +1,4 @@
-from sympy import randprime, Mod
+from sympy import randprime
 from math import gcd
 
 # Function to encrypt using public key
