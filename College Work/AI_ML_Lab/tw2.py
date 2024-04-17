@@ -29,8 +29,34 @@ tree = {
 }
 
 
-goal = 'G'
-start = 'S'
+def get_start():
+    max_value = -float('inf')  # Initialize max_value to a very small number
+    start_node = ""
+
+    for node in tree:
+        if tree[node][1] > max_value:
+            max_value = tree[node][1]
+            start_node = node
+
+    return start_node
+
+
+def get_end():
+    minv = float('inf')  # Initialize minv with a large number
+    goal = ""
+
+    for node in tree:
+        if tree[node][1] < minv:
+            minv = tree[node][1]
+            goal = node
+
+    return goal
+
+
+start = get_start()
+goal = get_end()
+
+print("Start:", start, "\tEnd:", goal, "\n")
 
 
 def get_children(node):
