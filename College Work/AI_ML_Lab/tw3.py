@@ -61,5 +61,21 @@ tree = {
     'M': [[], 0],
     'N': [[], 4]
 }
+
+
+def print_tree(node, graph, prefix="", is_tail=True):
+    neighbors, heuristic = graph[node]
+    print(prefix + ("└── " if is_tail else "├── ") + f"{node} (h={heuristic})")
+    if neighbors:
+        for i, neighbor in enumerate(neighbors):
+            print_tree(neighbor, graph, prefix +
+                       ("    " if is_tail else "│   "), i == len(neighbors) - 1)
+
+
+# Example usage:
+print("Tree with Heuristics:")
+print_tree(start_node, tree)
+
+
 path = astar(tree, start_node, goal_node)
 print("Path:", path)

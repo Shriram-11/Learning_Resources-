@@ -1,3 +1,6 @@
+import csv
+
+
 def classify_instance(instance, hypothesis):
     # Classify the instance based on the hypothesis
     for i in range(len(instance) - 1):
@@ -24,16 +27,21 @@ def find_s(training_data):
     # Step 3: Output hypothesis h
     return h
 
+# Read training data from CSV file
+
+
+def read_data_from_csv(filename):
+    with open(filename, 'r') as file:
+        reader = csv.reader(file)
+        data = [row for row in reader]
+    return data
+
 
 # Example usage:
 col_heads = ['Sky', 'AirTemp', 'Humidity',
              'Wind', 'Water', 'Forecast', 'Enjoy Sport']
-training_data = [
-    ['Sunny', 'Warm', 'Normal', 'Strong', 'Warm', 'Same', 'Yes'],
-    ['Sunny', 'Warm', 'High', 'Strong', 'Warm', 'Same', 'Yes'],
-    ['Rainy', 'Cold', 'High', 'Strong', 'Warm', 'Change', 'No'],
-    ['Sunny', 'Warm', 'High', 'Strong', 'Cool', 'Change', 'Yes']
-]
+data_filename = "data.csv"
+training_data = read_data_from_csv(data_filename)
 
 print("Column Headers:")
 print(", ".join(col_heads))
