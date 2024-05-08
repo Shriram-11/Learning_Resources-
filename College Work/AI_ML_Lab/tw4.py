@@ -1,5 +1,19 @@
 import csv
 
+# Define a function to read data from the CSV file
+
+
+def read_data_from_csv(filename):
+    with open(filename, 'r') as file:
+        reader = csv.reader(file)
+        data = [row for row in reader]
+    return data
+
+
+# Read data from the CSV file
+filename = "data.csv"
+data = read_data_from_csv(filename)
+
 
 def classify_instance(instance, hypothesis):
     # Classify the instance based on the hypothesis
@@ -9,13 +23,13 @@ def classify_instance(instance, hypothesis):
     return 'Yes'  # If all attributes match, classify as 'Yes'
 
 
-def find_s(training_data):
+def find_s(data):
     # Step 1: Initialize h to the most specific hypothesis in H
     # Initialize hypothesis with most specific constraints
-    h = ['0'] * (len(training_data[0]) - 1)
+    h = ['0'] * (len(data[0]) - 1)
 
     # Step 2: For each positive training instance x
-    for instance in training_data:
+    for instance in data:
         if instance[-1] == 'Yes':  # Check if instance is positive
             for i in range(len(instance) - 1):  # For each attribute constraint a, in h
                 if h[i] == '0':  # If constraint a is not yet set
@@ -27,29 +41,18 @@ def find_s(training_data):
     # Step 3: Output hypothesis h
     return h
 
-# Read training data from CSV file
-
-
-def read_data_from_csv(filename):
-    with open(filename, 'r') as file:
-        reader = csv.reader(file)
-        data = [row for row in reader]
-    return data
-
 
 # Example usage:
 col_heads = ['Sky', 'AirTemp', 'Humidity',
              'Wind', 'Water', 'Forecast', 'Enjoy Sport']
-data_filename = "data.csv"
-training_data = read_data_from_csv(data_filename)
 
 print("Column Headers:")
 print(", ".join(col_heads))
 print("Sample Data:")
-for instance in training_data:
+for instance in data:
     print(", ".join(instance))
 
-hypothesis = find_s(training_data)
+hypothesis = find_s(data)
 print("\nFinal hypothesis:", hypothesis)
 
 while True:
