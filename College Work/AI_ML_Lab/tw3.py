@@ -61,7 +61,7 @@ def reconstruct_path(parents, start, goal):
 # Example usage:
 start_node = 'A'
 goal_node = 'G'
-tree = {
+graph = {
     'A': [{'B': 5, 'C': 10}, 10],
     'B': [{'D': 5, 'E': 5}, 7],
     'C': [{'F': 5}, 7],
@@ -71,20 +71,6 @@ tree = {
     'G': [{}, 0]
 }
 
-
-def print_tree(node, graph, prefix="", is_tail=True):
-    neighbors, heuristic = graph[node]
-    print(prefix + ("└── " if is_tail else "├── ") + f"{node} (h={heuristic})")
-    if neighbors:
-        for neighbor, cost in neighbors.items():
-            print_tree(neighbor, graph, prefix +
-                       ("    " if is_tail else "│   ") + f"(cost={cost}) ", neighbor == list(neighbors.keys())[-1])
-
-
-# Example usage:
-print("Tree with Heuristics and Costs:")
-print_tree(start_node, tree)
-
 print("\nA* Search Path:")
-path = astar(tree, start_node, goal_node)
+path = astar(graph, start_node, goal_node)
 print("Final Path:", path)
