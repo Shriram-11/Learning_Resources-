@@ -27,6 +27,7 @@ def find_s(data):
     # Step 1: Initialize h to the most specific hypothesis in H
     # Initialize hypothesis with most specific constraints
     h = ['0'] * (len(data[0]) - 1)
+    print("Initial Hypothesis\t", h)
 
     # Step 2: For each positive training instance x
     for instance in data:
@@ -37,6 +38,7 @@ def find_s(data):
                     h[i] = instance[i]
                 elif h[i] != instance[i]:  # If constraint a is not satisfied by x
                     h[i] = '?'  # Replace a in h by the next more general constraint
+        print("Hypothesis after another instance\t", h)
 
     # Step 3: Output hypothesis h
     return h
