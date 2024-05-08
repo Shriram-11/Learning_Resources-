@@ -13,6 +13,8 @@ def astar(graph, start, goal):
     f_values = {node: float('inf') for node in graph}
     f_values[start] = graph[start][1]
 
+    iteration = 0
+
     while open_list:
         # get node with minimum f value
         current_f, current_node = heapq.heappop(open_list)
@@ -24,12 +26,14 @@ def astar(graph, start, goal):
                 path.append(current_node)
                 current_node = parents[current_node]
             path.append(start)
+            final_cost = g_values[goal]
+            print(f"\nFinal Cost: {final_cost}")
             return path[::-1]
 
         # explore neighbors
-        for child in graph[current_node][0]:
+        for child, cost in graph[current_node][0].items():
             # calculate tentative g value
-            tentative_g = g_values[current_node] + graph[child][1]
+            tentative_g = g_values[current_node] + cost
             if tentative_g < g_values[child]:
                 # update parent and g values
                 parents[child] = current_node
@@ -38,28 +42,33 @@ def astar(graph, start, goal):
                 # add child to open list
                 heapq.heappush(open_list, (f_values[child], child))
 
-    # no path found
-    return None
+        iteration += 1
+        print(f"\nIteration {iteration}:")
+        print("Current Path:", reconstruct_path(parents, start, current_node))
+        print(f"Evaluation Function Value for {
+              current_node}: {f_values[current_node]}")
+
+
+# Function to reconstruct the path from start to goal using parent nodes
+def reconstruct_path(parents, start, goal):
+    path = [goal]
+    while goal != start:
+        goal = parents[goal]
+        path.append(goal)
+    return path[::-1]
 
 
 # Example usage:
 start_node = 'A'
-goal_node = 'M'
+goal_node = 'G'
 tree = {
-    'A': [['B', 'C'], 30],
-    'B': [['D', 'E', 'F'], 25],
-    'C': [['G', 'H'], 28],
-    'D': [['I'], 22],
-    'E': [['J', 'K'], 19],
-    'F': [[], 16],
-    'G': [['L', 'M'], 10],
-    'H': [['N'], 17],
-    'I': [[], 9],
-    'J': [[], 7],
-    'K': [[], 6],
-    'L': [[], 3],
-    'M': [[], 0],
-    'N': [[], 4]
+    'A': [{'B': 5, 'C': 10}, 10],
+    'B': [{'D': 5, 'E': 5}, 7],
+    'C': [{'F': 5}, 7],
+    'D': [{'G': 10}, 3],
+    'E': [{'G': 7}, 2],
+    'F': [{'G': 8}, 1],
+    'G': [{}, 0]
 }
 
 
@@ -67,15 +76,15 @@ def print_tree(node, graph, prefix="", is_tail=True):
     neighbors, heuristic = graph[node]
     print(prefix + ("└── " if is_tail else "├── ") + f"{node} (h={heuristic})")
     if neighbors:
-        for i, neighbor in enumerate(neighbors):
+        for neighbor, cost in neighbors.items():
             print_tree(neighbor, graph, prefix +
-                       ("    " if is_tail else "│   "), i == len(neighbors) - 1)
+                       ("    " if is_tail else "│   ") + f"(cost={cost}) ", neighbor == list(neighbors.keys())[-1])
 
 
 # Example usage:
-print("Tree with Heuristics:")
+print("Tree with Heuristics and Costs:")
 print_tree(start_node, tree)
 
-
+print("\nA* Search Path:")
 path = astar(tree, start_node, goal_node)
-print("Path:", path)
+print("Final Path:", path)
