@@ -33,6 +33,9 @@ def iterative_deepening_dfs_rec(node, target, current_depth, max_depth, path):
 
 
 def print_tree(node, prefix="", is_tail=True):
+    '''
+    Optinal Function, wrote just to print the tree, code wont be affected without it
+    '''
     print(prefix + ("└── " if is_tail else "├── ") + str(node["value"]))
     if node["children"]:
         for i, child in enumerate(node["children"]):
