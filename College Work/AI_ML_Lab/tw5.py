@@ -45,9 +45,10 @@ tree = {
 # Starting the minimax algorithm from the root node 'A' assuming it's a max node
 result = minmax('A', tree, True)
 print(f"\nThe most appropriate value for the root node 'A' is {result}")
-
-# Convert the tree to the format required by print_tree function
-
+'''
+Optional Part , i just did it to print a tree so that its easy for me to understand
+Convert the tree to the format required by print_tree function
+'''
 
 def convert_tree(node_key, tree):
     node = {
@@ -61,7 +62,7 @@ def convert_tree(node_key, tree):
 converted_tree = convert_tree('A', tree)
 
 # Print the final tree with updated values
-#Optional Function, i just did it to print a tree so that its easy for me to understand
+
 
 def print_tree(node, prefix="", is_tail=True):
     print(prefix + ("└── " if is_tail else "├── ") + str(node["value"]))
