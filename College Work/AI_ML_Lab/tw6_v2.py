@@ -1,5 +1,7 @@
 import numpy as np
-
+'''
+Tried to something different, not advisable for termwork
+'''
 
 class Perceptron:
     def __init__(self, num_features, learning_rate=0.2, epochs=100):
