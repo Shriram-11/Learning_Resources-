@@ -1,3 +1,5 @@
+''' This is termwork 4 according to journal'''
+
 def minmax(node, tree, is_max_node):
     # Check if the current node is a leaf (no children)
     if len(tree[node][0]) == 0:
