@@ -1,3 +1,5 @@
+''' This is termwork 4 according to journal'''
+
 def minmax(node, tree, is_max_node):
     # Check if the current node is a leaf (no children)
     if len(tree[node][0]) == 0:
@@ -45,9 +47,10 @@ tree = {
 # Starting the minimax algorithm from the root node 'A' assuming it's a max node
 result = minmax('A', tree, True)
 print(f"\nThe most appropriate value for the root node 'A' is {result}")
-
-# Convert the tree to the format required by print_tree function
-
+'''
+Optional Part , i just did it to print a tree so that its easy for me to understand
+Convert the tree to the format required by print_tree function
+'''
 
 def convert_tree(node_key, tree):
     node = {

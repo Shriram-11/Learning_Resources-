@@ -1,3 +1,5 @@
+''' This is termwork 5 according to journal'''
+
 import csv
 
 # Define a function to read data from the CSV file
