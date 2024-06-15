@@ -1,4 +1,5 @@
 # Define the tree structure with specified and added static costs
+# tw2
 tree = {
     'S': [[('A', 7), ('B', 2)], 13],
     'A': [[('C', 4), ('D', 6)], 12],
