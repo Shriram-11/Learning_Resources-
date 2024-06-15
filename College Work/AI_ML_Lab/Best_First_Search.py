@@ -12,7 +12,10 @@ tree = {
     'C': [[], 7],
     'D': [[], 3],
 }
-
+'''
+Get Start and Gend_end functions are written to automate finding start and end nodes, you can manually define it.These are optional functions, alogorithm will
+not be affected because of it. You have to mention start and goal manully if you choose not to write it
+'''
 
 def get_start():
     max_value = -float('inf')  # Initialize max_value to a very small number
