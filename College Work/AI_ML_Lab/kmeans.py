@@ -2,6 +2,7 @@ import csv
 from math import sqrt
 import random
 from collections import defaultdict
+import matplotlib.pyplot as plt
 
 
 def euclid(p1, p2):
@@ -85,7 +86,26 @@ def k_means(filename, k, max_iterations=5, tol=1e-4):
     return centroids, clusters
 
 
+def plot_clusters(centroids, clusters):
+    colors = ['r', 'g', 'b', 'c', 'm', 'y', 'k']
+    plt.figure(figsize=(8, 6))
+
+    for i, (centroid, points) in enumerate(clusters.items()):
+        color = colors[i % len(colors)]
+        points = list(zip(*points))  # Transpose to get x and y separately
+        plt.scatter(points[0], points[1], c=color, label=f'Cluster {i+1}')
+        plt.scatter(*centroid, c=color, marker='x', s=200)  # Centroid marker
+
+    plt.title('K-Means Clustering')
+    plt.xlabel('Feature 1')
+    plt.ylabel('Feature 2')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
+
 # Example usage
 centroids, clusters = k_means('dataset.csv', 2)
 print("************************\n")
 print_d(centroids, clusters)
+plot_clusters(centroids, clusters)
